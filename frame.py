@@ -94,12 +94,22 @@ class Ui_MainWindow(object):
     
     def download(self):
         if self.rb_mp4.isChecked() == True:
-            url = self.txt_link.text()
-            titulo = self.txt_titulo.text()
-            titulo_mp4 = titulo + '.mp4'
-            yt_download(url,titulo_mp4)
-    
-    
+            try:
+                url = self.txt_link.text()
+                titulo = self.txt_titulo.text()
+                titulo_mp4 = titulo + '.mp4'
+                yt_download(url,titulo_mp4)
+            except:
+                pass
+        elif self.rb_mp3.isChecked() == True:
+            try:
+                url = self.txt_link.text()
+                titulo = self.txt_titulo.text()
+                titulo_mp3 = titulo + '.mp3'
+                yt_download(url,titulo_mp3, ismusic=True, codec  = "mp3")
+            except:
+                pass
+            
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
